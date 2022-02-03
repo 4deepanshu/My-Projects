@@ -1,0 +1,15 @@
+README
+authors:
+Name 1: Daniyar Kazbek
+Student id 1: 7012787
+Email 1: daka00001@stud.uni-saarland.de
+
+Name 2: Deepanshu Mehta
+Student id 2: 7011083
+Email 2: deme00001@stud.uni-saarland.de 
+
+- analysis for both English and Bengali languages as well as runnable code for English language is in project_english.ipynb
+- runnable code for Bengali language is in project_bengali.ipynb
+
+- preprocessing.py has sentence splitting and preprocessing
+- oov.py measures OOV rate and makes plots

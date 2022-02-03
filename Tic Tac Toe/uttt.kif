@@ -1,0 +1,262 @@
+;; Static relations
+(index 1)
+(index 2)
+(index 3)
+
+(equal 1 1)
+(equal 2 2)
+(equal 3 3)
+
+; Determine the 'less than' operation 
+(succ 1 2)
+(succ 2 3)
+(succ 3 4)
+(<= (lt ?a ?b)
+    (succ ?a ?b))
+(<= (lt ?a ?c)
+    (succ ?a ?b)
+    (lt ?b ?c))
+    
+(<= (base (mark ?i ?j ?k ?l x))
+ (index ?i)
+ (index ?j)
+ (index ?k)
+ (index ?l))
+
+(<= (base (mark ?i ?j ?k ?l o))
+ (index ?i)
+ (index ?j)
+ (index ?k)
+ (index ?l))
+    
+(<= (base (control ?p))
+ (role ?p))
+    
+(<= (input ?player (play ?i ?j ?k ?l))
+ (index ?i)
+ (index ?j)
+ (index ?k)
+ (index ?l)
+ (role ?player))
+    
+(<= (input ?player noop)
+ (role ?player))
+    
+;; Role relations
+(role xplayer)
+(role oplayer)
+
+;; Initial state
+(init (control xplayer))
+
+;; All of the squares may be chosen as next square
+(init (next_square 1 1 next))
+(init (next_square 1 2 next))
+(init (next_square 1 3 next))
+(init (next_square 2 1 next))
+(init (next_square 2 2 next))
+(init (next_square 2 3 next))
+(init (next_square 3 1 next))
+(init (next_square 3 2 next))
+(init (next_square 3 3 next))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LEGAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (legal xplayer noop)
+ (true (control oplayer))) 
+
+(<= (legal oplayer noop) ;; Add a legality 'not to play' for the oplayer
+ (true (control xplayer)))
+
+(<= (legal ?player (play ?i ?j ?k ?l))
+ (true(control ?player))
+ ;; Enumarate coordinates from 1 to 3 and set restrictions on chosen coordinates
+ ;; (to not fill all the cells)
+ (lt ?i 4) 
+ (not(lt ?i 1))
+ (lt ?j 4)
+ (not(lt ?j 1))
+ (lt ?k 4)
+ (not(lt ?k 1))
+ (lt ?l 4)
+ (not(lt ?l 1))
+ 
+ (not (isMarked ?i ?j ?k ?l)) ;; The cell is not marked
+ (not (true (wonBoard ?i ?j ))) ;; The board is not won
+ (not (isFull ?i ?j)) ;; The board is not full
+
+ ;; The square is the next square or the next square is full or won
+ (or (isNext ?i ?j) nextIsFullOrWon)
+)
+ 	
+;; hint:
+;; - when defining which board to play next, be aware that there are two 
+;;   special cases: the initial move and when a board is entirely full
+   
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; NEXT Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;(<= (next (mark ?i ?j ?k ?l ?mark))
+; (role ?player)
+; (does ?player (play ?i ?j ?k ?l)))
+
+(<=(next(wonBoard ?i ?j))
+ (won-board ?i ?j ?mark)
+)
+
+(<=(next(wonBoard ?i ?j))
+ (true(wonBoard ?i ?j ))
+)
+
+(<=(next(flag2 nextQueriedIs ?i ?j))
+ (true(next_square ?i ?j next))
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(<= (next(control xplayer))
+ (true(control oplayer)))
+ 
+(<= (next(control oplayer))
+ (true(control xplayer)))
+ 
+(<= (next(mark ?i ?j ?k ?l x))
+ (does xplayer (play ?i ?j ?k ?l)))
+ 
+(<= (next(mark ?i ?j ?k ?l o))
+ (does oplayer (play ?i ?j ?k ?l)))
+ 
+(<= (next(mark ?i ?j ?k ?l ?mark))
+ (true(mark ?i ?j ?k ?l ?mark))
+)
+ 
+(<= (next(next_square ?k ?l next)) ;; The square ?k ?l is next 
+ (role ?player)
+ (does ?player (play ?i ?j ?k ?l))) ;; If some player chose the cell (k, l) in any of the square 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TERMINAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= terminal
+ (won x))
+(<= terminal
+ (won o))
+(<= terminal
+ (not open))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GOAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (goal oplayer 0)
+ (won x))
+
+;; Commented for debugging
+(<= (goal oplayer 50)
+ (not (won x))
+ (not (won o))
+ (not open))
+ 
+(<= (goal oplayer 100)
+ (won o))
+
+(<= (goal xplayer 0)
+ (won o))
+ 
+(<= (goal xplayer 50)
+ (not (won x))
+ (not (won o))
+ (not open))
+ 
+(<= (goal xplayer 100)
+ (won x))
+
+(<= (row ?i ?j ?k ?mark)
+ (true(mark ?i ?j ?k 1 ?mark))
+ (true(mark ?i ?j ?k 2 ?mark))
+ (true(mark ?i ?j ?k 3 ?mark))
+)
+(<= (col ?i ?j ?k ?mark)
+ (true(mark ?i ?j 1 ?k ?mark))
+ (true(mark ?i ?j 2 ?k ?mark))
+ (true(mark ?i ?j 3 ?k ?mark))
+)
+
+(<= (diag ?i ?j ?mark)
+ (true(mark ?i ?j 1 1 ?mark))
+ (true(mark ?i ?j 2 2 ?mark))
+ (true(mark ?i ?j 3 3 ?mark))
+)
+
+(<= (diag ?i ?j ?mark)
+ (true(mark ?i ?j 1 3 ?mark))
+ (true(mark ?i ?j 2 2 ?mark))
+ (true(mark ?i ?j 3 1 ?mark))
+)
+
+(<= (line ?i ?j ?mark)
+ (row ?i ?j ?k ?mark))
+ 
+(<= (line ?i ?j ?mark)
+ (col ?i ?j ?k ?mark))
+
+(<= (line ?i ?j ?mark)
+ (diag ?i ?j ?mark))
+ 
+
+(<= (won-board ?board-x ?board-y ?mark)
+ (line ?board-x ?board-y ?mark))
+
+(<= (won ?mark) ;; player won if he won 2 boards
+ (won-board ?board1-x ?board1-y ?mark)
+ (won-board ?board2-x ?board2-y ?mark)
+ (or (distinct ?board2-x ?board1-x) (distinct ?board2-y ?board1-y))
+)
+
+(<= open
+ (not allClosed)
+)
+
+(<= allClosed
+ (or (isFull 1 1) (won-board 1 1 ?mark))
+ (or (isFull 1 2) (won-board 1 2 ?mark))
+ (or (isFull 1 3) (won-board 1 3 ?mark))
+ (or (isFull 2 1) (won-board 2 1 ?mark))
+ (or (isFull 2 2) (won-board 2 2 ?mark))
+ (or (isFull 2 3) (won-board 2 3 ?mark))
+ (or (isFull 3 1) (won-board 3 1 ?mark))
+ (or (isFull 3 2) (won-board 3 2 ?mark))
+ (or (isFull 3 3) (won-board 3 3 ?mark))
+)
+
+(<= (isMarked ?i ?j ?k ?l)
+ (true(mark ?i ?j ?k ?l ?mark)))
+ 
+(<= (isFull ?i ?j) ;; The board has no free space for marks
+ (isMarked ?i ?j 1 1)
+ (isMarked ?i ?j 1 2)
+ (isMarked ?i ?j 1 3)
+ (isMarked ?i ?j 2 1)
+ (isMarked ?i ?j 2 2)
+ (isMarked ?i ?j 2 3)
+ (isMarked ?i ?j 3 1)
+ (isMarked ?i ?j 3 2)
+ (isMarked ?i ?j 3 3)
+)
+
+;; The next square (determined by the previous player) is full or won
+(<= nextIsFullOrWon
+ (true(next_square ?h ?g next)) ;; Get the next square. There's only one next square
+ (or (isFull ?h ?g) (isWon ?h ?g)))
+
+(<= (isWon ?i ?j)
+ (true(wonBoard ?i ?j))
+)
+
+;; The square is not full and the next square is this one
+(<= (isNext ?i ?j)
+ (true (next_square ?i ?j next)))
+

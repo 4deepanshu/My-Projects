@@ -1,0 +1,202 @@
+{
+    "py/object": "ExperimentLogger.ExperimentLogger",
+    "commit_id": "5b4a7f84ab369c634d00b6094f4feaf05d8ea59f",
+    "random_seed": 3961459576686268241,
+    "experiment_configuration": {
+        "py/object": "ExperimentConfiguration.ExperimentConfiguration",
+        "model_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "R2UNet.R2UNet"
+            },
+            "kwargs": {
+                "channels": [
+                    3,
+                    16,
+                    32,
+                    64,
+                    128,
+                    64,
+                    32,
+                    16,
+                    33
+                ]
+            }
+        },
+        "optimizer_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.optim.adam.Adam"
+            },
+            "kwargs": {
+                "lr": 0.0005
+            }
+        },
+        "loss_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.nn.modules.loss.CrossEntropyLoss"
+            },
+            "kwargs": {
+                "ignore_index": -1,
+                "weight": {
+                    "py/reduce": [
+                        {
+                            "py/function": "torch._utils._rebuild_tensor_v2"
+                        },
+                        {
+                            "py/tuple": [
+                                {
+                                    "py/reduce": [
+                                        {
+                                            "py/function": "torch.storage._load_from_bytes"
+                                        },
+                                        {
+                                            "py/tuple": [
+                                                {
+                                                    "py/b64": "gAKKCmz8nEb5IGqoUBkugAJN6QMugAJ9cQAoWBAAAABwcm90b2NvbF92ZXJzaW9ucQFN6QNYDQAAAGxpdHRsZV9lbmRpYW5xAohYCgAAAHR5cGVfc2l6ZXNxA31xBChYBQAAAHNob3J0cQVLAlgDAAAAaW50cQZLBFgEAAAAbG9uZ3EHSwR1dS6AAihYBwAAAHN0b3JhZ2VxAGN0b3JjaApGbG9hdFN0b3JhZ2UKcQFYDgAAADk0MzEwNjk5NTgxMTUycQJYBgAAAGN1ZGE6MHEDSyFOdHEEUS6AAl1xAFgOAAAAOTQzMTA2OTk1ODExNTJxAWEuIQAAAAAAAADH4+RAlBHeQZiG30F74rRBj4PQQhZzyUEAAIA/lMXDQPv1LELq9KJFkw+/PwTphEI9DlBCZmmuRAMPXkNv+hJDouzjQcK2Q0aQETNDNkNkQrDlIkB7z+pBecIcQb3L1UF6QspDbLqqQB/+v0I7+7VC3Q4HRXZO00aQgI5Es2plQ9WvpkI="
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                0,
+                                {
+                                    "py/tuple": [
+                                        33
+                                    ]
+                                },
+                                {
+                                    "py/tuple": [
+                                        1
+                                    ]
+                                },
+                                false,
+                                {
+                                    "py/reduce": [
+                                        {
+                                            "py/type": "collections.OrderedDict"
+                                        },
+                                        {
+                                            "py/tuple": []
+                                        },
+                                        null,
+                                        null,
+                                        {
+                                            "py/tuple": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "epochs": 300,
+        "train_batch_size": 32,
+        "val_batch_size": 128,
+        "early_stop_patience": 7
+    },
+    "now": {
+        "py/object": "datetime.datetime",
+        "__reduce__": [
+            {
+                "py/type": "datetime.datetime"
+            },
+            [
+                "B+UDAwcfMwjM5Q=="
+            ]
+        ]
+    },
+    "datetime_format": "%Y-%m-%dT%H-%M-%S",
+    "log_path": "../experiments/task2_weighted_loss/",
+    "stopped_early": true,
+    "verbose": true,
+    "validation_losses": [
+        3.5099265352884927,
+        2.837308537165324,
+        2.4475407886505125,
+        2.6012023003896076,
+        2.4251293182373046,
+        2.3608851559956867,
+        2.350097017288208,
+        2.4449225584665935,
+        2.3452964146931965,
+        2.268937037785848,
+        2.2929505443573,
+        2.241812947591146,
+        2.1662325541178387,
+        2.388129857381185,
+        2.1861279424031577,
+        2.0125537713368735,
+        2.088584451675415,
+        2.0679308350880943,
+        1.9692252031962076,
+        1.89908829053243,
+        1.924547316233317,
+        1.928636172612508,
+        1.9886226081848144,
+        1.7895822970072428,
+        1.847174072265625,
+        1.8135377597808837,
+        1.7083336607615154,
+        1.7504632886250813,
+        1.7553744697570801,
+        1.667794459660848,
+        1.6539231395721437,
+        1.6441422748565673,
+        1.6357691224416098,
+        1.5676043128967285,
+        1.6680679416656494,
+        1.6536999543507893,
+        1.573907527923584,
+        1.693069248199463,
+        1.7399745845794679,
+        1.5892481168111166,
+        1.6094565900166828
+    ],
+    "training_losses": [
+        3.5182701887148564,
+        2.9550772232875646,
+        2.667542639848228,
+        2.765060185316567,
+        2.5939693813680487,
+        2.564578115694991,
+        2.531239402717519,
+        2.590149852895291,
+        2.4888107767729,
+        2.4155320998218572,
+        2.417734451204817,
+        2.3582511553363266,
+        2.3106897982481485,
+        2.5143092641206546,
+        2.278696294944977,
+        2.1690945580740957,
+        2.1844331365210987,
+        2.1828910113717908,
+        2.1149221874843134,
+        2.0918813131457177,
+        2.040563559398473,
+        2.026642607573037,
+        2.060660589699433,
+        1.9589668605483581,
+        1.9769648038561098,
+        1.9807292258182418,
+        1.90093516376531,
+        1.8632937563245542,
+        1.8585801457913123,
+        1.866271434409596,
+        1.7892112624979464,
+        1.799995779411815,
+        1.7896840813895252,
+        1.7507863370948862,
+        1.833587167864648,
+        1.8197054690066898,
+        1.7829309394872077,
+        1.8031316657378296,
+        1.9062300094711446,
+        1.7799829753091403,
+        1.7459390880014294
+    ]
+}

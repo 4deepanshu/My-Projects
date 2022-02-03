@@ -1,0 +1,180 @@
+{
+    "py/object": "ExperimentLogger.ExperimentLogger",
+    "commit_id": "93e52d5a1becfe132a07d565b8213bdbcc510fca",
+    "random_seed": 3961459576686268241,
+    "experiment_configuration": {
+        "py/object": "ExperimentConfiguration.ExperimentConfiguration",
+        "model_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "R2UNet.R2UNet"
+            },
+            "kwargs": {
+                "channels": [
+                    3,
+                    16,
+                    32,
+                    64,
+                    128,
+                    64,
+                    32,
+                    16,
+                    19
+                ]
+            }
+        },
+        "optimizer_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.optim.adam.Adam"
+            },
+            "kwargs": {}
+        },
+        "loss_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.nn.modules.loss.CrossEntropyLoss"
+            },
+            "kwargs": {
+                "ignore_index": 255,
+                "weight": {
+                    "py/reduce": [
+                        {
+                            "py/function": "torch._utils._rebuild_tensor_v2"
+                        },
+                        {
+                            "py/tuple": [
+                                {
+                                    "py/reduce": [
+                                        {
+                                            "py/function": "torch.storage._load_from_bytes"
+                                        },
+                                        {
+                                            "py/tuple": [
+                                                {
+                                                    "py/b64": "gAKKCmz8nEb5IGqoUBkugAJN6QMugAJ9cQAoWBAAAABwcm90b2NvbF92ZXJzaW9ucQFN6QNYDQAAAGxpdHRsZV9lbmRpYW5xAohYCgAAAHR5cGVfc2l6ZXNxA31xBChYBQAAAHNob3J0cQVLAlgDAAAAaW50cQZLBFgEAAAAbG9uZ3EHSwR1dS6AAihYBwAAAHN0b3JhZ2VxAGN0b3JjaApGbG9hdFN0b3JhZ2UKcQFYDgAAADkzOTgzMzg0OTM2OTEycQJYBgAAAGN1ZGE6MHEDSxNOdHEEUS6AAl1xAFgOAAAAOTM5ODMzODQ5MzY5MTJxAWEuEwAAAAAAAAAAAIA/ltzIQHIk1z8rZmdCzmQDQiAb10HjDiRDR9eFQpRzHEDObgdCqlkHQYFjC0L3Z45DwDPCQBQljkKnuo9CqxpLQ8UqX0MpLO1C"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                0,
+                                {
+                                    "py/tuple": [
+                                        19
+                                    ]
+                                },
+                                {
+                                    "py/tuple": [
+                                        1
+                                    ]
+                                },
+                                false,
+                                {
+                                    "py/reduce": [
+                                        {
+                                            "py/type": "collections.OrderedDict"
+                                        },
+                                        {
+                                            "py/tuple": []
+                                        },
+                                        null,
+                                        null,
+                                        {
+                                            "py/tuple": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "epochs": 300,
+        "train_batch_size": 32,
+        "val_batch_size": 128,
+        "early_stop_patience": 7
+    },
+    "now": {
+        "py/object": "datetime.datetime",
+        "__reduce__": [
+            {
+                "py/type": "datetime.datetime"
+            },
+            [
+                "B+UDCBEhDQiJ1g=="
+            ]
+        ]
+    },
+    "datetime_format": "%Y-%m-%dT%H-%M-%S",
+    "log_path": "../experiments/train_ids/task2_weighted_loss/",
+    "stopped_early": true,
+    "verbose": true,
+    "validation_losses": [
+        2.9833401330312093,
+        2.749567797978719,
+        2.6936146450042724,
+        2.588921772638957,
+        2.4039001337687176,
+        2.3323231379191083,
+        2.200586598714193,
+        2.1151016616821288,
+        1.9953127304712932,
+        1.8868830903371174,
+        1.8314517005284627,
+        1.889455262819926,
+        1.885137022336324,
+        1.7842378091812134,
+        1.7648539034525554,
+        1.7072992054621379,
+        1.711928013165792,
+        1.7572335990269978,
+        1.6034952290852864,
+        1.5758806800842284,
+        1.606492838859558,
+        1.601955402692159,
+        1.5853610229492188,
+        1.5409709024429321,
+        1.6522610346476236,
+        2.834677791595459,
+        2.7537443319956463,
+        2.7192145284016926,
+        2.6963271490732827,
+        2.6719754282633463,
+        2.619917802810669
+    ],
+    "training_losses": [
+        2.98078046228284,
+        2.7604629943526793,
+        2.699160896283444,
+        2.5918798873580506,
+        2.4362002824622895,
+        2.3415493575657638,
+        2.2085446791782557,
+        2.1101332589621857,
+        1.9963908978043317,
+        1.8814077188812683,
+        1.8131921478075401,
+        1.8404991022894315,
+        1.8590490694135149,
+        1.752979959951383,
+        1.7388015409273523,
+        1.665449317014106,
+        1.6937061458213307,
+        1.715586402349383,
+        1.5482570173584411,
+        1.5270001558054274,
+        1.5553324069709422,
+        1.5536402778090717,
+        1.5360279809203103,
+        1.475995759473783,
+        1.5915893723140253,
+        2.8437598514556885,
+        2.7633099357212814,
+        2.72677210308681,
+        2.7028510526853187,
+        2.678338679821692,
+        2.6279157614485125
+    ]
+}

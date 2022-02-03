@@ -1,0 +1,127 @@
+{
+    "py/object": "ExperimentLogger.ExperimentLogger",
+    "commit_id": "a23b94d57e47cce13a3639bc5979ab3dd1ac8294",
+    "random_seed": 3961459576686268241,
+    "experiment_configuration": {
+        "py/object": "ExperimentConfiguration.ExperimentConfiguration",
+        "model_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "BCDUNet.BCDUNet"
+            },
+            "kwargs": {
+                "channels": [
+                    3,
+                    16,
+                    32,
+                    64,
+                    128,
+                    64,
+                    32,
+                    16,
+                    33
+                ],
+                "depth": 1
+            }
+        },
+        "optimizer_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.optim.adam.Adam"
+            },
+            "kwargs": {}
+        },
+        "loss_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.nn.modules.loss.CrossEntropyLoss"
+            },
+            "kwargs": {
+                "ignore_index": -1
+            }
+        },
+        "epochs": 300,
+        "train_batch_size": 25,
+        "val_batch_size": 64,
+        "early_stop_patience": 7
+    },
+    "now": {
+        "py/object": "datetime.datetime",
+        "__reduce__": [
+            {
+                "py/type": "datetime.datetime"
+            },
+            [
+                "B+UDBgsjFAAZ8g=="
+            ]
+        ]
+    },
+    "datetime_format": "%Y-%m-%dT%H-%M-%S",
+    "log_path": "../experiments/task3_shallow_dense_layer/",
+    "stopped_early": true,
+    "verbose": true,
+    "validation_losses": [
+        3.550379788080851,
+        3.1976872316996254,
+        1.7961808331807454,
+        1.560492655436198,
+        1.4255539385477702,
+        1.3222916158040365,
+        1.5510122219721476,
+        1.5593160168329874,
+        0.990237979888916,
+        0.8713422028223673,
+        1.0029110638300578,
+        0.8825271050135295,
+        0.985422477722168,
+        0.7830002355575562,
+        0.7788789447148641,
+        0.772899870077769,
+        0.7822155253092448,
+        0.7344754711786906,
+        0.7265236020088196,
+        0.7051111157735189,
+        0.7189965136845906,
+        1.10742160320282,
+        0.683179128964742,
+        0.9049280460675557,
+        0.7524938535690308,
+        0.7140098261833191,
+        0.7653545467058818,
+        0.7641060280799866,
+        0.7319448494911194,
+        0.7271593570709228
+    ],
+    "training_losses": [
+        3.5508884165220174,
+        3.206426797314225,
+        1.768652618577547,
+        1.5375618329003593,
+        1.4052972363534375,
+        1.2975814204349696,
+        1.5536570513805497,
+        1.5548439118572486,
+        0.9731665035943005,
+        0.8543392068871828,
+        0.9804246706383251,
+        0.8696951082042444,
+        0.9620971441268921,
+        0.7612731137453953,
+        0.7602257088857276,
+        0.7598462772146564,
+        0.7744967916078657,
+        0.7118382139517883,
+        0.7084330178644056,
+        0.6898293388001273,
+        0.7062054384534604,
+        1.092412108572844,
+        0.6605603445578958,
+        0.8813746946771568,
+        0.732741437181134,
+        0.6864126543686768,
+        0.7379992035616224,
+        0.7326612986582461,
+        0.7046483826637268,
+        0.6966376838728646
+    ]
+}

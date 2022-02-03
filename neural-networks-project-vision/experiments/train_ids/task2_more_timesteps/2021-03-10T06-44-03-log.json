@@ -1,0 +1,101 @@
+{
+    "py/object": "ExperimentLogger.ExperimentLogger",
+    "commit_id": "74436969064af64e28c84bc1ba41c0ca4f51c1c3",
+    "random_seed": 3961459576686268241,
+    "experiment_configuration": {
+        "py/object": "ExperimentConfiguration.ExperimentConfiguration",
+        "model_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "R2UNet.R2UNet"
+            },
+            "kwargs": {
+                "channels": [
+                    3,
+                    16,
+                    32,
+                    64,
+                    128,
+                    64,
+                    32,
+                    16,
+                    19
+                ],
+                "timesteps": 3
+            }
+        },
+        "optimizer_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.optim.adam.Adam"
+            },
+            "kwargs": {}
+        },
+        "loss_conf": {
+            "py/object": "ClassConfiguration.ClassConfiguration",
+            "class_type": {
+                "py/type": "torch.nn.modules.loss.CrossEntropyLoss"
+            },
+            "kwargs": {
+                "ignore_index": 255
+            }
+        },
+        "epochs": 300,
+        "train_batch_size": 32,
+        "val_batch_size": 128,
+        "early_stop_patience": 7
+    },
+    "now": {
+        "py/object": "datetime.datetime",
+        "__reduce__": [
+            {
+                "py/type": "datetime.datetime"
+            },
+            [
+                "B+UDCgYsAwtxpQ=="
+            ]
+        ]
+    },
+    "datetime_format": "%Y-%m-%dT%H-%M-%S",
+    "log_path": "../experiments/train_ids/task2_more_timesteps/",
+    "stopped_early": true,
+    "verbose": true,
+    "validation_losses": [
+        3.0268141333262126,
+        1.722373636563619,
+        1.585568879445394,
+        1.455498431523641,
+        1.297859598795573,
+        1.2089305861790975,
+        1.1474770625432333,
+        1.1257331228256227,
+        1.0812227710088094,
+        1.052285828590393,
+        2.4853639221191406,
+        1.7969034099578858,
+        1.707898645401001,
+        1.6772872257232665,
+        1.665256485939026,
+        1.654608243306478,
+        1.6475909376144409
+    ],
+    "training_losses": [
+        3.0299576487496633,
+        1.726236118334476,
+        1.583367242144647,
+        1.4557068339463706,
+        1.2910690763509163,
+        1.2106119886291362,
+        1.1546956693791897,
+        1.130379583679627,
+        1.0955813528666987,
+        1.0683135656552893,
+        2.490833445843135,
+        1.8018917467883815,
+        1.7106408235959918,
+        1.6775302639631466,
+        1.663224189571131,
+        1.6540234857184866,
+        1.6452204637438337
+    ]
+}
